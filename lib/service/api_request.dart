@@ -17,10 +17,11 @@ class NetworkRequest {
 
   static Future<List<Team1Squad>> fetchTeam1Squad() async {
     final Uri url = Uri.parse(_url);
-
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      return compute(parseTeam1Squad, response.body);
+      var res = response.body;
+      print(res);
+      return compute(parseTeam1Squad, res);
     } else {
       print(e);
       throw Exception("No Name");
