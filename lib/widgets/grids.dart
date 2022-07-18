@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SampleScreen extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class SampleScreen extends StatefulWidget {
 }
 
 class _SampleScreenState extends State<SampleScreen> {
+  // ignore: non_constant_identifier_names
   DataBean? player_data;
   LoadingDialog? pr;
 
@@ -19,11 +21,11 @@ class _SampleScreenState extends State<SampleScreen> {
     pr = LoadingDialog(
         context: context,
         dismissable: true,
-        title: Text(
+        title: const Text(
           "Loading",
           style: TextStyle(fontSize: 18, color: Colors.black),
         ),
-        message: Text(
+        message: const Text(
           "Please wait, we are processing your data",
           style: TextStyle(fontSize: 12),
         ));
@@ -33,69 +35,88 @@ class _SampleScreenState extends State<SampleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: true,
-            title: Text(
-              "Players Data",
+    if (player_data != null) {
+      if (player_data!.team1Squad!.homeTeamPlayingXI!.isNotEmpty) {
+        return SingleChildScrollView(
+          child: GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisExtent: 100,
+              mainAxisSpacing: 24,
             ),
-          ),
-          body: player_data != null
-              ? player_data!.team1Squad!.homeTeamPlayingXI!.length > 0
-                  ? GridView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisExtent: 100,
+            itemCount: player_data!.team1Squad!.homeTeamPlayingXI!.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 70.0,
+                        width: 147,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF1F2022),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8),
+                              topRight: Radius.circular(8)),
+                        ),
                       ),
-                      itemCount:
-                          player_data!.team1Squad!.homeTeamPlayingXI!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          padding: EdgeInsets.symmetric(vertical: 5),
-                          child: InkWell(
-                            onTap: () async {
-                              // on press
-                            },
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                              elevation: 5,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              child: IntrinsicHeight(
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          player_data!
-                                              .team1Squad!
-                                              .homeTeamPlayingXI![index]
-                                              .playerName!,
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                      Container(
+                        height: 30.0,
+                        width: 147,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF2A2B2C),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(8),
+                            bottomRight: Radius.circular(8),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            player_data!.team1Squad!.homeTeamPlayingXI![index]
+                                .playerName!,
+                            style: GoogleFonts.openSans(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(
+                                0xffffffff,
                               ),
                             ),
                           ),
-                        );
-                      },
-                    )
-                  : Container()
-              : Container()),
-    );
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                    child: CircleAvatar(
+                      backgroundColor: const Color(0xffFAB500),
+                      radius: 52,
+                      child: CircleAvatar(
+                        radius: 49,
+                        backgroundColor: const Color(0xffffffff),
+                        child: Image.asset(
+                          'assets/southafrica_cricket_logo.png',
+                          height: 98,
+                          width: 98,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        );
+      } else {
+        return Container();
+      }
+    } else {
+      return Container();
+    }
   }
 
   Future<void> getData() async {
@@ -106,7 +127,9 @@ class _SampleScreenState extends State<SampleScreen> {
     if (response.statusCode == 200) {
       print(response);
       var data = json.decode('$response');
-      player_data = DataBean.fromJson(data);
+      setState(() {
+        player_data = DataBean.fromJson(data);
+      });
     } else {
       throw Exception();
     }
