@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sportsbuzz/ui/home_page.dart';
 import 'package:sportsbuzz/ui/Profile/UI/profile_page.dart';
 import 'package:sportsbuzz/ui/master-class/ui/master_class.dart';
+import 'package:sportsbuzz/ui/policy/ui/policy.dart';
 import 'package:sportsbuzz/widgets/grids.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MasterClass(),
+      home: Policy(),
     );
   }
 }
