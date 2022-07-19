@@ -25,7 +25,7 @@ class FavSeriesCard extends StatelessWidget {
                           height: 40,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       CircleAvatar(
@@ -40,7 +40,7 @@ class FavSeriesCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 24,
               ),
               Text(
@@ -53,10 +53,10 @@ class FavSeriesCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Divider(
+          const Divider(
             color: Colors.white,
           ),
           Padding(
@@ -69,9 +69,9 @@ class FavSeriesCard extends StatelessWidget {
                     Image.asset(
                       'assets/vector.png',
                       height: 37,
-                      color: Color(0xffBABABA),
+                      color: const Color(0xffBABABA),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 14,
                     ),
                     Text(
@@ -89,9 +89,9 @@ class FavSeriesCard extends StatelessWidget {
                     Image.asset(
                       'assets/vector.png',
                       height: 37,
-                      color: Color(0xffBABABA),
+                      color: const Color(0xffBABABA),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 14,
                     ),
                     Text(
