@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportsbuzz/ui/icc/widget/list_odi.dart';
 
 class ICCList extends StatelessWidget {
   const ICCList({Key? key}) : super(key: key);
@@ -9,7 +10,6 @@ class ICCList extends StatelessWidget {
       length: 3,
       child: Scaffold(
           appBar: AppBar(
-            centerTitle: true,
             bottom: PreferredSize(
                 preferredSize: const Size.fromHeight(30.0),
                 child: TabBar(
@@ -28,7 +28,7 @@ class ICCList extends StatelessWidget {
                     ])),
           ),
           body: TabBarView(
-            children: [ICCList(), ICCList(), ICCList()],
+            children: <Widget>[ListOdis(), ListOdis(), ListOdis()],
           )),
     );
   }
