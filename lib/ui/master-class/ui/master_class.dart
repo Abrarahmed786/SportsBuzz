@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sportsbuzz/ui/master-class/ui/jonty_rhodes.dart';
 import 'package:sportsbuzz/ui/master-class/widgets/customer_review.dart';
 import 'package:sportsbuzz/ui/master-class/widgets/trending_news.dart';
 
@@ -177,7 +178,14 @@ class MasterClass extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => JR(),
+                              ),
+                            );
+                          },
                           child: Text(
                             'Subscribe Now',
                             style: GoogleFonts.openSans(
@@ -247,7 +255,14 @@ class MasterClass extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => JR(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Subscribe Now',
                           style: GoogleFonts.openSans(
