@@ -1,3 +1,85 @@
+// import 'dart:async';
+// import 'dart:convert';
+
+// import 'package:flutter/material.dart';
+// import 'package:http/http.dart' as http;
+
+// Future<Album> fetchAlbum() async {
+//   final response = await http
+//       .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+
+//   if (response.statusCode == 200) {
+
+//     return Album.fromJson(jsonDecode(response.body));
+//   } else {
+
+//     throw Exception('Failed to load album');
+//   }
+// }
+
+// class Album {
+//   final int userId;
+//   final int id;
+//   final String title;
+
+//   const Album({
+//     required this.userId,
+//     required this.id,
+//     required this.title,
+//   });
+
+//   factory Album.fromJson(Map<String, dynamic> json) {
+//     return Album(
+//       userId: json['userId'],
+//       id: json['id'],
+//       title: json['title'],
+//     );
+//   }
+// }
+
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'package:intl/intl.dart';
+
+// class PlayerInfo {
+//   String? playerName;
+//   String? playerId;
+//   String? playertype;
+//   bool? playerCmsDataExist;
+
+//   PlayerInfo({
+//     this.playerName,
+//     this.playerId,
+//     this.playertype,
+//     this.playerCmsDataExist,
+//   });
+// }
+
+// String tournament_id = "sr:tournament:30620";
+// String match_id = "sr:match:34723811";
+// String homeTeamId = "sr:competitor:142712";
+// String awayTeamId = "sr:competitor:210368";
+
+// Future<List> fetchData(
+//   String playerName,
+//   String playerId,
+//   String Playertype,
+//   String playerCmsDataExist,
+// ) async {
+//   var url =
+//       "https://api.sportsbuzz.com/sportradar/squad?tournament_id=sr:tournament:30620&match_id=sr:match:34723811&homeTeamId=sr:competitor:142712&awayTeamId=sr:competitor:210368";
+//   var response = await http.get(Uri.parse(url));
+//   if (response.statusCode == 200) {
+//     var res = json.decode(response.body);
+
+//     var playerName = res["homeTeamPlayingXI"]["playerName"].toString();
+//     var playerId = res["homeTeamPlayingXI"]["playerId"].toString();
+//     var playertype = res["homeTeamPlayingXI"]["playertype"].toString();
+//     var playerCmsDataExist =
+//         res["homeTeamPlayingXI"]["playerCmsDataExist"].toString();
+//   }
+// }
+
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';

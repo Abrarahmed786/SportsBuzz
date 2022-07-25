@@ -10,10 +10,11 @@ class PlayerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         ClipRect(
           child: Text(
-            team1Squad.homeTeamPlayingXi![1].playerName.toString(),
+            // team1Squad.homeTeamPlayingXi![1].playerName.toString(),
+            "Null",
             style: const TextStyle(color: Colors.white),
           ),
         )
