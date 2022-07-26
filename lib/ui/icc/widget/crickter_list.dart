@@ -10,25 +10,29 @@ class ICCList extends StatelessWidget {
       length: 3,
       child: Scaffold(
           appBar: AppBar(
-            bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(30.0),
-                child: TabBar(
-                    unselectedLabelColor: Colors.white.withOpacity(0.3),
-                    indicatorColor: Colors.white,
-                    tabs: const [
-                      Tab(
-                        child: Text('ODI'),
-                      ),
-                      Tab(
-                        child: Text('T20'),
-                      ),
-                      Tab(
-                        child: Text('Test'),
-                      ),
-                    ])),
+            toolbarHeight: 0,
+            elevation: 0,
+            bottom: TabBar(
+                unselectedLabelColor: Colors.white.withOpacity(0.3),
+                indicatorColor: Colors.white,
+                tabs: const [
+                  Tab(
+                    child: Text('ODI'),
+                  ),
+                  Tab(
+                    child: Text('T20'),
+                  ),
+                  Tab(
+                    child: Text('Test'),
+                  ),
+                ]),
           ),
-          body: TabBarView(
-            children: <Widget>[ListOdis(), ListOdis(), ListOdis()],
+          body: const TabBarView(
+            children: <Widget>[
+              ListOdis(),
+              ListOdis(),
+              ListOdis(),
+            ],
           )),
     );
   }

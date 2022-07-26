@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportsbuzz/ui/expert_analysis/ui/expert_analysis.dart';
 import 'package:sportsbuzz/ui/home_page.dart';
 import 'package:sportsbuzz/ui/Profile/UI/profile_page.dart';
 import 'package:sportsbuzz/ui/icc/icc.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ICC(),
+      home: ExpertAnalysis(),
     );
   }
 }
